@@ -15,25 +15,31 @@ public class Cadastro_dev {
     }
 
     static void cabecalho() {
-        System.out.println("=============================CADASTRO DEV CAP===================================");
-        System.out.println("------------Bem vindo ao cadastro de desenvolvedores da Capgemini----------------");
+        System.out.println("\n=============================CADASTRO DEV CAP===================================\n");
+        System.out.println("----------------- Bem vindo ao cadastro de desenvolvedores da Capgemini -----------------");
     }
 
-    static void imprime_menu() {
-        System.out.println("Menu");
-        System.out.println(" \n 1-Cadastrar Dev \n 2-Cadastro de linguagem \n 3-Sair");
-    }
+    /* static void imprime_menu() {
+         System.out.println("Menu");
+         System.out.println(" \n 1-Cadastrar Dev \n 2-Cadastro de linguagem \n 3-Sair ");
+     }
+ */
+    static int escolha_menu() {
+        int opcao = 0;
 
-    static int escolha_menu(){
-        boolean validacao = true;
+        while(opcao > 3 || opcao < 1) {
+            System.out.print("\n\t\t\t\t-------Menu------");
 
-        System.out.println("Menu");
-        System.out.println(" \n 1-Cadastrar Dev \n 2-Cadastro de linguagem \n 3-Sair");
+            System.out.print(" \n 1-Cadastrar Dev \n 2-Cadastro de linguagem \n 3-Sair \n Digite a opção: ");
+            opcao = sc.nextInt();
+            if(opcao > 3 || opcao < 1){
+                System.out.println("Opção inválida. Escolha uma opção válida.");
+            }
+        }
 
-        int opcao = sc.nextInt();
         String opcaoNome = "";
         String opcaoSobrenome = "";
-        int idade ;
+        int idade;
         int senioridade;
 
         String nomeLinguagem, descricaoLinguagem;
@@ -42,27 +48,31 @@ public class Cadastro_dev {
 
         switch (opcao) {
             case 1:
+
                 opcaoNome = cadastro_nome();
                 opcaoSobrenome = cadastro_sobrenome();
                 idade = cadastro_idade();
                 senioridade = cadastro_senioridade();
-                System.out.print("\n------------Cadastrado com sucesso----------------\n");
+                System.out.print("\n-----------------Cadastrado com sucesso----------------\n");
                 System.out.println(senioridade);
                 System.out.println(senioridades);
-                System.out.printf(" Nome: %s \n Sobrenome: %s \n Idade: %d \n Senioridade: %s." , opcaoNome, opcaoSobrenome, idade, senioridades.get(senioridade-1));
+                System.out.printf(" Nome: %s \n Sobrenome: %s \n Idade: %d \n Senioridade: %s.", opcaoNome, opcaoSobrenome, idade, senioridades.get(senioridade - 1));
                 break;
+
             case 2:
                 nomeLinguagem = cadastro_linguagem();
                 descricaoLinguagem = descricao_linguagem();
                 aplicLinguagem = aplicacaoLinguagem();
-                System.out.print("\n------------Cadastrado com sucesso----------------\n");
-                System.out.printf(" Nome da linguagem: %s \n Descrição: %s \n Aplicação da Linguagem: %s." , nomeLinguagem, descricaoLinguagem, tipoAplicacao.get(aplicLinguagem-1));
+                System.out.print("\n---------------Cadastrado com sucesso----------------\n");
+                System.out.printf(" Nome da linguagem: %s \n Descrição: %s \n Aplicação da Linguagem: %s.", nomeLinguagem, descricaoLinguagem, tipoAplicacao.get(aplicLinguagem - 1));
                 break;
             case 3:
-                System.out.printf("------------Saindo----------------");
+                System.out.printf("--------------Saindo----------------");
         }
         return opcao;
     }
+
+
 
     static String cadastro_nome(){
         boolean validacao = true ;
@@ -83,7 +93,7 @@ public class Cadastro_dev {
     static String cadastro_sobrenome(){
         String sobrenome = "";
         boolean validacao = true;
-        ;
+
         do{
             System.out.print("Informe o sobrenome do Desenvolvedor:");
             sobrenome = sc.next();
@@ -149,7 +159,6 @@ public class Cadastro_dev {
                         validacao = false;
                     }
                 }while (validacao);
-
                 System.out.printf("Parabens, a linguagem foi cadastrado!");
         }
         return opcao;
