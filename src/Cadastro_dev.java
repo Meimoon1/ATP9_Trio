@@ -1,18 +1,17 @@
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cadastro_dev {
     static Scanner sc = new Scanner(System.in);
+    static List<String> senioridades = new ArrayList<>(Arrays.asList("Junior", "Pleno", "Senior"));
+    static List<String> tipoAplicacao = new ArrayList<>(Arrays.asList("Front-end", "Back-end", "Mobile"));
 
     public static void main(String[] args) {
         cabecalho();
-        //imprime_menu();
         escolha_menu();
-       // cadastro_nome();
-        //cadastro_sobrenome();
-      //  cadastro_idade();
-       // cadastro_senioridade();
-      //  cadastro_linguagem();
-       // aplicacaoLinguagem();
     }
 
     static void cabecalho() {
@@ -43,19 +42,21 @@ public class Cadastro_dev {
 
         switch (opcao) {
             case 1:
-                 opcaoNome = cadastro_nome();
-                 opcaoSobrenome = cadastro_sobrenome();
-                 idade = cadastro_idade();
-                 senioridade = cadastro_senioridade();
+                opcaoNome = cadastro_nome();
+                opcaoSobrenome = cadastro_sobrenome();
+                idade = cadastro_idade();
+                senioridade = cadastro_senioridade();
                 System.out.print("\n------------Cadastrado com sucesso----------------\n");
-                System.out.printf(" Nome: %s \n Sobrenome: %s \n Idade: %d Código da Senioridade: %d." , opcaoNome, opcaoSobrenome, idade, senioridade);
+                System.out.println(senioridade);
+                System.out.println(senioridades);
+                System.out.printf(" Nome: %s \n Sobrenome: %s \n Idade: %d \n Senioridade: %s." , opcaoNome, opcaoSobrenome, idade, senioridades.get(senioridade-1));
                 break;
             case 2:
                 nomeLinguagem = cadastro_linguagem();
                 descricaoLinguagem = descricao_linguagem();
                 aplicLinguagem = aplicacaoLinguagem();
                 System.out.print("\n------------Cadastrado com sucesso----------------\n");
-                System.out.printf(" Nome da linguagem: %s \n Descrição: %s \n Código da Aplicação da Linguagem: %d." , nomeLinguagem, descricaoLinguagem, aplicLinguagem);
+                System.out.printf(" Nome da linguagem: %s \n Descrição: %s \n Aplicação da Linguagem: %s." , nomeLinguagem, descricaoLinguagem, tipoAplicacao.get(aplicLinguagem-1));
                 break;
             case 3:
                 System.out.printf("------------Saindo----------------");
@@ -82,7 +83,7 @@ public class Cadastro_dev {
     static String cadastro_sobrenome(){
         String sobrenome = "";
         boolean validacao = true;
-;
+        ;
         do{
             System.out.print("Informe o sobrenome do Desenvolvedor:");
             sobrenome = sc.next();
